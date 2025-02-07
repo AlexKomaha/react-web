@@ -1,12 +1,17 @@
 import React, { Component } from 'react'
 import { Container, Navbar, FormControl, Nav, Form, Button } from 'react-bootstrap'
 import logo from "./logo192.png";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Home from "../Pages/Home";
+import About from "../Pages/About";
+import Contacts from "../Pages/Contacts";
+import Blog from "../Pages/Blog";
 
 export default class Header extends Component {
   render() {
     return (
       <>
-      <Navbar fixed='top' collapseOnSelect expand="md" bg="dark" variant="dark" >
+      <Navbar sticky='top' collapseOnSelect expand="md" bg="dark" variant="dark" >
         <Container>
           <Navbar.Brand href='/' >
           <img
@@ -15,7 +20,7 @@ export default class Header extends Component {
           width='30'
           className='d-inline-block align-top'
           alt='Logo'
-           /> React Site
+           /> React Web
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav" >
@@ -36,6 +41,14 @@ export default class Header extends Component {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Home/>}/>
+          <Route exact path='/about' element={<About/>}/>
+          <Route exact path='/contacts' element={<Contacts/>}/>
+          <Route exact path='/blog' element={<Blog/>}/>
+        </Routes>
+      </Router>
       </>
     )
   }
